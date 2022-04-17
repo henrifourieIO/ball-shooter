@@ -7,7 +7,7 @@ const startBtn = document.getElementById("start-btn");
 const modelEl = document.getElementById("modelEl");
 
 const c = canvas.getContext("2d");
-const topScore = localStorage.getItem("ballShooterTopScore");
+let topScore = localStorage.getItem("ballShooterTopScore");
 let score = 0;
 
 let cursorX;
@@ -16,7 +16,6 @@ let cursorY;
 document.onmousemove = (e) => {
   cursorX = e.clientX;
   cursorY = e.clientY;
-  
 };
 
 if (topScore) {
@@ -126,12 +125,14 @@ class Enemy {
 }
 
 function updateScore() {
-    if (topScore <= score) {
-      localStorage.setItem("ballShooterTopScore", score);
-      topScoreModal.innerText = score;
-    } else {
-      topScoreModal.innerText = topScore;
-    }
+  topScore = localStorage.getItem("ballShooterTopScore");
+  if (topScore < score) {
+    localStorage.setItem("ballShooterTopScore", score);
+    topScoreModal.innerText = score;
+  } else {
+    topScoreModal.innerText = topScore;
+  }
+  topScoreModal.innerText = localStorage.getItem("ballShooterTopScore");
   finalScore.innerText = score;
   scoreDOM.innerText = 0;
   score = 0;
@@ -178,7 +179,7 @@ function init() {
   score = 0;
   scoreDOM.innerText = 0;
   velocityTimes = 1.0;
-  topScoreDOM.innerText = localStorage.getItem("ballShooterTopScore");;
+  topScoreDOM.innerText = localStorage.getItem("ballShooterTopScore");
 }
 
 function spawnEnemies() {
