@@ -129,7 +129,6 @@ function updateScore() {
       topScoreDOM.innerText = score;
     } else {
       topScoreDOM.innerText = topScore;
-
     }
   } else {
     localStorage.setItem("ballShooterTopScore", score);
@@ -179,6 +178,8 @@ function init() {
   particles = [];
   cursor = new Cursor(cursorX, cursorY);
   score = 0;
+  scoreDOM.innerText = 0;
+  velocityTimes = 1.0;
 }
 
 function spawnEnemies() {
@@ -245,7 +246,6 @@ const animate = () => {
         clearInterval(interval);
         updateScore();
         modelEl.style.display = "flex";
-        canvas.style.pointerEvents = 'none';
       }, 0);
     }
 
