@@ -1,7 +1,8 @@
 const canvas = document.getElementById("canvas");
 const scoreDOM = document.getElementById("score");
 const finalScore = document.getElementById("final-score");
-const topScoreDOM = document.getElementById("top-score");
+const topScoreModal = document.getElementById("top-score");
+const topScoreDOM = document.getElementById("top-score-dom");
 const startBtn = document.getElementById("start-btn");
 const modelEl = document.getElementById("modelEl");
 
@@ -19,8 +20,10 @@ document.onmousemove = (e) => {
 };
 
 if (topScore) {
+  topScoreModal.innerText = topScore;
   topScoreDOM.innerText = topScore;
 } else {
+  topScoreModal.innerText = "NONE";
   topScoreDOM.innerText = "NONE";
 }
 
@@ -123,19 +126,14 @@ class Enemy {
 }
 
 function updateScore() {
-  if (topScore) {
-    if (topScore < score) {
+    if (topScore <= score) {
       localStorage.setItem("ballShooterTopScore", score);
-      topScoreDOM.innerText = score;
+      topScoreModal.innerText = score;
     } else {
-      topScoreDOM.innerText = topScore;
+      topScoreModal.innerText = topScore;
     }
-  } else {
-    localStorage.setItem("ballShooterTopScore", score);
-    topScoreDOM.innerText = score;
-  }
   finalScore.innerText = score;
-
+  scoreDOM.innerText = 0;
   score = 0;
 }
 
@@ -180,6 +178,7 @@ function init() {
   score = 0;
   scoreDOM.innerText = 0;
   velocityTimes = 1.0;
+  topScoreDOM.innerText = localStorage.getItem("ballShooterTopScore");;
 }
 
 function spawnEnemies() {
