@@ -129,12 +129,15 @@ function updateScore() {
       topScoreDOM.innerText = score;
     } else {
       topScoreDOM.innerText = topScore;
+
     }
   } else {
     localStorage.setItem("ballShooterTopScore", score);
     topScoreDOM.innerText = score;
   }
   finalScore.innerText = score;
+
+  score = 0;
 }
 
 class Cursor {
