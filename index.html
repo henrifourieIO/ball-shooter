@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Shooter</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1 height=device-height"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+
+    <canvas id="canvas"></canvas>
+    <div class="scoreBoard">
+      <p>
+        Score: <span id="score">0</span>
+      </p>
+    </div>
+    <div class="start-game-modal" id="modelEl">
+      <div class="modal">
+        <p>Top Score: <span id="top-score"></span></p>
+        <h1 id="final-score">0</h1>
+        <p class="points">Points</p>
+        <button id="start-btn">Start Game</button>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js" integrity="sha512-6zTDRWNxo8vI6JZYDCwhrJpg5icK3P4HNnW3czsO5Scb3lAoPDam+/wF3eog4hxcl0h44d0XlIcFkuoSaWHQ2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="main.js"></script>
+</html>
